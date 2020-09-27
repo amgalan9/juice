@@ -1,5 +1,6 @@
 {% extends 'post/main.html' %}
 {% block featured %}
+
   {% for post in posts %}
     <h3>{{ post.title }}</h3>
     <div>
@@ -8,9 +9,27 @@
     </div>
     <p>{{ post.content }}</p>
   {% endfor %}
+
 {% endblock featured %}
 
 
 {%  block posts %}
+
+  {% if is_paginated %}
+    {% if page_obj.number == 1 %}
+      <div class="page-direc-parent">
+        <a href="?page={{ page_obj.next_page_number }}">Explore</a>
+      </div>
+    {% elif page_obj.has_previous and page_obj.has_next %}
+      <div class="page-direc-parent">
+        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        <a href="?page={{ page_obj.next_page_number }}">Next</a>
+      </div>
+    {% elif page_obj.has_next == False %}
+      <div class="page-direc-parent">
+        <a href="?page={{ page_obj.previous_page_number }}">Go back</a>
+      </div>
+    {% endif %}
+  {% endif %}
 
 {% endblock posts %}

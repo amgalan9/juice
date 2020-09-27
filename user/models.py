@@ -5,3 +5,6 @@ class Profile(models.Model):
 
     author = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='profile.jpg', upload_to='profile_pics')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'

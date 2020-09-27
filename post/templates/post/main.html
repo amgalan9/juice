@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'post/main.css' %}">
+  {% if title %}
+    <title>{{ title }}</title>
+  {% else %}
+    <title>TSENEGLEGCH</title>
+  {% endif %}
+</head>
+<body>
+
+  <header id="navbar-top">
+    <ul>
+      <li class="top-left"><a href="#">Explore</a></li>
+      <li class="top-left"><a href="#">Start a project</a></li>
+      <li class="top-center"><a href="{% url 'home-page' %}"><img src="../../../media/logo.png" width="40px"></a></li>
+      <li class="top-right"><a href="#">Search</a></li>
+      <li class="top-right"><a href="#">Log in</a></li>
+    </ul>
+  </header>
+
+  <nav id="navbar-bottom">
+    <div class="container">
+      <ul>
+        <li><a href="#">Arts</a></li>
+        <li><a href="#">Music & Composition</a></li>
+        <li><a href="#">Games</a></li>
+        <li><a href="#">Charity</a></li>
+        <li><a href="#">Youtube</a></li>
+        <li><a href="#">Film</a></li>
+        <li><a href="#">Food & Craft</a></li>
+      </ul>
+    </div>
+  </nav>
+  <hr>
+
+  <section id="featured">
+    <div class="container">
+      {% block featured %}{% endblock featured %}
+    </div>
+  </section>
+
+  <section id="posts">
+    <div class="container">
+      {% block posts %}{% endblock posts %}
+    </div>
+  </section>
+
+  <footer id="main-footer">
+    <p>Copyright &copy; 'TSENEGLEGCH' 2020</p>
+  </footer>
+
+</body>
+</html>
